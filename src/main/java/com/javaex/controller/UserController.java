@@ -85,11 +85,9 @@ public class UserController {
 		if(no != -1) { //정상 
 			//db 수정 
 			 userService.exeModify(userVo);
-			 
 			return JsonResult.success(userVo.getName());
 		} else {
 			//토큰이 없거나(로그인상태 아님) 변조된 경우 
-
 			return JsonResult.fail("fail");
 		}
 		
