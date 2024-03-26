@@ -12,5 +12,39 @@
 		]]>
 	</select>
 
+	<!-- 회원정보수정폼 -->
+	<select id="selectOneByNo" parameterType="int" resultType="com.javaex.vo.UserVo">
+		<![CDATA[ 
+			select 	no, 
+						id,
+						name,
+						password,
+						gender
+			from users
+			where no = #{no}
+		]]>
+	</select>
+
+
+	<!-- 회원정보수정 -->
+	<update id="update" parameterType="com.javaex.vo.UserVo">
+		<![CDATA[ 
+			update users
+			set name = #{name},
+				password = #{password},
+				gender = #{gender}
+			where no = #{no}
+		]]>
+	</update>
+
+	<!-- 회원가입 -->
+	<insert id="join" parameterType="com.javaex.vo.UserVo">
+		insert into users
+		values(null,
+				#{id},
+				#{password},
+				#{name},
+				#{gender})
+	</insert>
 
 </mapper>
