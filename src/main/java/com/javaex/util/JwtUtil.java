@@ -46,16 +46,19 @@ public class JwtUtil {
 	/***해더에서 사용자 no 추출 ***/
 	public static int getNoFromHeader(HttpServletRequest request) {
 		String token= getTokenByHeader(request);
+		//getTokenByHeader(HttpServletRequest request) 메소드는 HTTP 요청 헤더에서 토큰 값을 추출
 		
 		if(token != null) {
 			boolean check = checkToken(token);
+			//추출한 토큰이 유효한지 검증
 			
-			if(check) {
+			if(check) {//검증 결과가 true이면
 				return Integer.parseInt(getSubjectFromToken(token));
+				//검증된 토큰에서 사용자 번호를 추출 -> 추출한 사용자 번호를 정수로 변환하여 반환
 			}
 		}
-		
-		return -1;
+		//만약 토큰이 없거나 유효하지 않은 경우에는 -1을 반환
+		return -1 ;
 	}
 	
 	

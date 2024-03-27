@@ -14,9 +14,6 @@ public class BoardService {
 	@Autowired
 	private BoardDao boardDao;
 
-	//////////////////////////////////////////
-	// 일반게시판 //
-	//////////////////////////////////////////
 	// 리스트
 	public List<BoardVo> exeList() {
 		System.out.println("BoardService.exeList()");
@@ -58,47 +55,5 @@ public class BoardService {
 		return count;
 	}
 
-	// 검색
-	public List<BoardVo> exeSearch(String search) {
-		System.out.println("BoardService.exeSearch()");
-
-		List<BoardVo> boardList = boardDao.searchList(search);
-
-		return boardList;
-	}
-
-	//////////////////////////////////////////
-	// 댓글게시판 //
-	//////////////////////////////////////////
-	// 댓글 list
-	public List<BoardVo> exeCommentList() {
-		System.out.println("BoardService.exeCommentList()");
-
-		List<BoardVo> commentList = boardDao.CommentList();
-
-		return commentList;
-	}
-
-	// 등록
-	public int exeCommentInsert(BoardVo commentVo) {
-		System.out.println("BoardService.exeCommentInsert()");
-
-		return boardDao.commentInsert(commentVo);
-	}
-
-	// read
-	public BoardVo exeCommentSelectOne(int no) {
-			System.out.println("BoardService.exeSelectOne()");
-
-			return boardDao.commentSelectOne(no);
-		}
-
-	// 수정
-	public int exeCommentModify(BoardVo commentVo) {
-		System.out.println("BoardService.exeCommentModify()");
-
-		int count = boardDao.commentModify(commentVo);
-
-		return count;
-	}
+	
 }
