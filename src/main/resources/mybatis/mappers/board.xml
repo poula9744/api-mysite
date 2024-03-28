@@ -37,7 +37,7 @@
 	<!-- read: 한 명 정보 가져오기 -->
 	<select id="selectOne" parameterType="int" resultType="com.javaex.vo.BoardVo">
 		<![CDATA[
-			select title, u.name, hit, b.reg_date as regDate, content
+			select title, u.name, hit, b.reg_date as regDate, content, b.user_no userNo
 			from rboard b  join users u
 			on b.user_no = u.no
 			where b.no = #{no};

@@ -46,8 +46,9 @@ public class BoardDao {
 
 	// 수정
 	public int boardModify(BoardVo boardVo) {
-
-		return sqlSession.update("board.modify", boardVo);
+		int count = sqlSession.update("board.modify", boardVo);
+		System.out.println(count);
+		return count;
 	}
 
 	// 검색
@@ -58,35 +59,6 @@ public class BoardDao {
 		return boardList;
 	}
 
-	//////////////////////////////////////////
-	// 댓글게시판 //
-	//////////////////////////////////////////
-	// 댓글 list
-	// 리스트
-	public List<BoardVo> CommentList() {
-		System.out.println("BoardDao.CommentList()");
-		List<BoardVo> commentList = sqlSession.selectList("board.commentSelect");
-		System.out.println(commentList);
-		return commentList;
-	}
 
-	// 등록
-	public int commentInsert(BoardVo commentVo) {
-		int count = sqlSession.insert("board.commentInsert", commentVo);
-		System.out.println(count);
-		return count;
-	}
-
-	// read
-	public BoardVo commentSelectOne(int no) {
-		sqlSession.update("board.commentUpdateHit", no);
-		return sqlSession.selectOne("board.commentSelectOne", no);
-	}
-
-	// 수정
-	public int commentModify(BoardVo commentVo) {
-
-		return sqlSession.update("board.commentModify", commentVo);
-	}
 
 }

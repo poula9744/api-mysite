@@ -73,9 +73,7 @@ public class JwtUtil {
         }else {
         	System.out.println("요청문서에 토큰없음");
         	return null; // 토큰이 없거나 Bearer 타입이 아닐 경우
-        }
-        
-        
+        }   
     }
 	
     // 토큰이 유효한지 검사

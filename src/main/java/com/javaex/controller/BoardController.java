@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -56,4 +57,23 @@ public class BoardController {
 			return JsonResult.fail("fail");
 		}
 	}
+	
+	//modify
+	@PutMapping("/api/board")
+	public JsonResult modify(@RequestBody BoardVo boardVo, HttpServletRequest request) {
+		System.out.println("BoardController.modify()");
+		
+		//헤더에서 사용자  no 추출
+		int no = JwtUtil.getNoFromHeader(request);
+		
+		if(no == boardVo.getUserNo()) {
+			 int count = boardService.exeModify(boardVo);
+			 System.out.println(count);
+			return JsonResult.success(count);
+		} else {
+			return JsonResult.fail("fail");
+		}
+	}
+	
+	
 }
